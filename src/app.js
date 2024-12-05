@@ -6,10 +6,13 @@ import morgan from 'morgan';
 import consola from 'consola';
 
 // importing other stuff
+import { connectToDb } from './utils/db';
+
 import { errorLogger, errorHandler, invalidPathHandler } from './middlewares';
 import indexRouter from './routes';
 
 async function start() {
+  await connectToDb();
   const app = express();
   const server = http.createServer(app);
   app.enable('trust proxy');
