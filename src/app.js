@@ -1,13 +1,14 @@
 // importing packages
 import http from 'http';
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import consola from 'consola';
 
 // importing other stuff
 import { connectToDb } from './utils/db';
-
+import { corsConfig } from './configs';
 import { errorLogger, errorHandler, invalidPathHandler } from './middlewares';
 import indexRouter from './routes';
 import path from 'path';
@@ -22,6 +23,7 @@ async function start() {
       '[:date[iso]] - :remote-addr - :user-agent - :method - :url - :status - :response-time ms'
     )
   );
+  app.use(cors(corsConfig));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.get('/', (req, res) => {
