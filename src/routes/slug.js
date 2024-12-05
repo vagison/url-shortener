@@ -4,6 +4,7 @@ import { slugController } from '../controllers';
 
 const slugRouter = express.Router();
 
-slugRouter.post('/', slugController.create);
+slugRouter.post('/slug', slugController.create);
+slugRouter.get('/:slug', slugController.get);
 
 export default slugRouter;

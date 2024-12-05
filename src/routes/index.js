@@ -4,6 +4,6 @@ import slugRouter from './slug';
 
 const indexRouter = express.Router();
 
-indexRouter.use('/slug', slugRouter);
+indexRouter.use('/', slugRouter);
 
 export default indexRouter;
