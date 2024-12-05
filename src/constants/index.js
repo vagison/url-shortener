@@ -1,6 +1,6 @@
-import appErrors from './app/errors';
-import appLogs from './app/logs';
-import appWarnings from './app/warnings';
+import appErrors from './app/messages/errors';
+import appLogs from './app/messages/logs';
+import appWarnings from './app/messages/warnings';
 import errorMessagesConstants from './messages/error';
 import responseMessagesConstants from './messages/response';
 

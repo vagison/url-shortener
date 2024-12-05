@@ -10,6 +10,7 @@ import { connectToDb } from './utils/db';
 
 import { errorLogger, errorHandler, invalidPathHandler } from './middlewares';
 import indexRouter from './routes';
+import path from 'path';
 
 async function start() {
   await connectToDb();
@@ -19,6 +20,13 @@ async function start() {
   app.use(morgan('[:date[iso]] - :remote-addr - :user-agent - :method - :url - :status - :response-time ms'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
+  });
+  app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'ico', 'favicon.ico'));
+  });
+  app.use('/public', express.static(path.join(__dirname, 'public')));
   app.use('/', indexRouter);
   app.use(invalidPathHandler);
   app.use(errorLogger);

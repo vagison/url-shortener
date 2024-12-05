@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="/public/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL Shortener</h1>
+      <div id="form">
+        <div class="form-group">
+          <p id="enter-url-here">Enter the URL to shorten</p>
+          <label for="url" id="url-label">URL</label>
+          <br />
+          <input type="text" id="url" placeholder="URL" />
+        </div>
+        <div class="form-group">
+          <button id="shorten-btn">Shorten</button>
+        </div>
+      </div>
+      <div id="success" style="display: none">
+        <div class="success">
+          <p>Success! Here's your short URL:</p>
+          <a id="short-url" target="_blank" href="#">https://short.ly/abc123</a>
+          <button id="copy-btn">Copy</button>
+        </div>
+      </div>
+    </div>
+    <script src="/public/js/script.js"></script>
+  </body>
+</html>

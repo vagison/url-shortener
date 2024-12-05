@@ -18,8 +18,13 @@ async function findById(id) {
   const query = slugQueries.findById();
   const values = [id];
   const result = await db.query(query, values);
-  const record = transform(result.rows[0]);
-  return record;
+
+  if (result.rows.length < 1) {
+    return false;
+  } else {
+    const record = transform(result.rows[0]);
+    return record;
+  }
 }
 
 async function create(data) {

@@ -1,4 +1,6 @@
+import path from 'path';
 import PrettyError from 'pretty-error';
+import { errorMessagesConstants } from '../constants';
 
 function errorLogger(error, req, res, next) {
   const pe = new PrettyError();
@@ -9,6 +11,10 @@ function errorLogger(error, req, res, next) {
 function errorHandler(error, req, res, _) {
   const { statusCode, message, name, stack } = error;
 
+  if (message === errorMessagesConstants.Slug.InvalidSlug || name === 'error getting the slug') {
+    return res.sendFile(path.join(__dirname, '..', 'public', 'html', '404.html'));
+  }
+
   const err = {
     statusCode,
     message,
@@ -16,10 +22,9 @@ function errorHandler(error, req, res, _) {
     stack: process.env.NODE_ENV === 'development' ? stack : undefined,
   };
 
-  // TODO: improve
   if (name === 'ValidationError') {
     err.statusCode = 400;
-    err.message = 'BadRequest';
+    err.message = error.message;
   }
 
   if (!statusCode) {

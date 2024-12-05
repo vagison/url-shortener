@@ -1,6 +1,5 @@
 const CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-// NB: does not validate input
 function encode(int) {
   if (int === 0) {
     return CHARSET[0];
@@ -15,20 +14,17 @@ function encode(int) {
 }
 
 function decode(str) {
-  let res = 0,
-    length = str.length,
-    i,
-    char;
+  let res = 0;
+  let length = str.length;
+  let i;
+  let char;
   for (i = 0; i < length; i++) {
     char = str.charCodeAt(i);
     if (char < 58) {
-      // 0-9
       char = char - 48;
     } else if (char < 91) {
-      // A-Z
       char = char - 29;
     } else {
-      // a-z
       char = char - 87;
     }
     res += char * Math.pow(62, length - i - 1);
@@ -44,9 +40,11 @@ function padWithZeros(input) {
 function removeLeadingZeros(input) {
   const str = String(input);
   let index = 0;
+
   while (index < str.length && str[index] === '0') {
     index++;
   }
+
   return str.slice(index) || '0';
 }
 export { encode, decode, padWithZeros, removeLeadingZeros };

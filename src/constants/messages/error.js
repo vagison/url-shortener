@@ -1,9 +1,10 @@
 const constants = {
   URL: {
-    InvalidURL: 'Invalid URL provided.',
+    URLRequested: 'URL is required',
+    InvalidURL: 'Invalid URL provided',
   },
   Slug: {
-    InvalidSlug: 'Invalid slug provided.',
+    InvalidSlug: 'Invalid slug provided',
   },
 };
 
