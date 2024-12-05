@@ -3,13 +3,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const appConfig = {
-  appPort: process.env.PORT,
-  appHost: process.env.HOST,
-  appUrl: process.env.APP_URL ? process.env.APP_URL : process.env.HOST + ':' + process.env.PORT,
+  appUrl: process.env.APP_URL ? process.env.APP_URL : `localhost:${process.env.PORT}`,
 };
 
 const corsConfig = {
-  origin: [process.env.CORS_ORIGIN, 'http://localhost:3000'],
+  origin: [appConfig.appUrl],
   credentials: true,
 };
 
