@@ -4,50 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - Page Not Found</title>
-    <style>
-      body {
-        background-color: #6a0dad; /* Purple background */
-        color: #ffcc00; /* Yellow text */
-        font-family: 'Arial', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        text-align: center;
-      }
-      h1 {
-        font-size: 8rem;
-        margin: 0;
-      }
-      p {
-        font-size: 1.5rem;
-        margin-top: 1rem;
-      }
-      a {
-        color: #ffcc00;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 2rem;
-        display: inline-block;
-        padding: 0.5rem 1.5rem;
-        background-color: #6a0dad;
-        border: 2px solid #ffcc00;
-        border-radius: 30px;
-        transition: background-color 0.3s, border-color 0.3s;
-      }
-      a:hover {
-        background-color: #ffcc00;
-        color: #6a0dad;
-        border-color: #6a0dad;
-      }
-    </style>
+    <link rel="stylesheet" href="/public/css/404.css" />
   </head>
   <body>
     <div>
       <h1>404</h1>
       <p>Oops! Looks like there is no such Slug!</p>
-      <a href="http://localhost:3000">Go Back Home</a>
+      <a id="home-url" href="#">Go Back Home</a>
     </div>
+    <script src="/public/js/404.js"></script>
   </body>
 </html>

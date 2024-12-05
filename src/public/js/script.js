@@ -5,6 +5,8 @@ const success = document.getElementById('success');
 const shortUrl = document.getElementById('short-url');
 const copyBtn = document.getElementById('copy-btn');
 
+const BASE_URL = 'http://localhost:3000';
+
 shortenBtn.addEventListener('click', async () => {
   const url = urlInput.value;
 
@@ -14,7 +16,7 @@ shortenBtn.addEventListener('click', async () => {
   }
 
   try {
-    const response = await fetch('http://localhost:3000/slug', {
+    const response = await fetch(`${BASE_URL}/slug`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
