@@ -7,6 +7,7 @@ import consola from 'consola';
 
 // importing other stuff
 import { errorLogger, errorHandler, invalidPathHandler } from './middlewares';
+import indexRouter from './routes';
 
 async function start() {
   const app = express();
@@ -15,6 +16,7 @@ async function start() {
   app.use(morgan('[:date[iso]] - :remote-addr - :user-agent - :method - :url - :status - :response-time ms'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
+  app.use('/', indexRouter);
   app.use(invalidPathHandler);
   app.use(errorLogger);
   app.use(errorHandler);
