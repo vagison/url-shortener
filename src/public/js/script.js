@@ -30,7 +30,7 @@ shortenBtn.addEventListener('click', async () => {
     }
 
     const data = await response.json();
-    const shortenedUrl = data.slug.slugURL; // Assuming the API returns the shortened URL in this field
+    const shortenedUrl = data.slug.slugURL;
 
     shortUrl.href = shortenedUrl;
     shortUrl.textContent = shortenedUrl;
