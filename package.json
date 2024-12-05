@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon --exec babel-node ./src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && babel ./src --out-dir dist --copy-files",
+    "clean": "rm -rf dist"
   },
   "keywords": [],
   "author": "Roman-Vahram Margaryan",
