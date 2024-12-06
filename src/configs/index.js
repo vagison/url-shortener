@@ -5,7 +5,7 @@ dotenv.config();
 const appConfig = {
   appUrl: process.env.APP_URL
     ? process.env.APP_URL
-    : `localhost:${process.env.PORT}`,
+    : `http://localhost:${process.env.PORT}`,
 };
 
 const corsConfig = {

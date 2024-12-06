@@ -11,8 +11,13 @@ function errorLogger(error, req, res, next) {
 function errorHandler(error, req, res, _) {
   const { statusCode, message, name, stack } = error;
 
-  if (message === errorMessagesConstants.Slug.InvalidSlug || name === 'error getting the slug') {
-    return res.sendFile(path.join(__dirname, '..', 'public', 'html', '404.html'));
+  if (
+    message === errorMessagesConstants.Slug.InvalidSlug ||
+    name === 'error getting the slug'
+  ) {
+    return res
+      .status(404)
+      .sendFile(path.join(__dirname, '..', 'public', 'html', '404.html'));
   }
 
   const err = {
@@ -29,7 +34,10 @@ function errorHandler(error, req, res, _) {
 
   if (!statusCode) {
     err.statusCode = 500;
-    err.message = process.env.NODE_ENV === 'development' ? message : 'Internal server error';
+    err.message =
+      process.env.NODE_ENV === 'development'
+        ? message
+        : 'Internal server error';
   }
 
   return res.status(err.statusCode).json(err);
@@ -37,13 +45,10 @@ function errorHandler(error, req, res, _) {
 
 function invalidPathHandler(req, res) {
   const statusCode = 404;
-  const message = 'Invalid path';
 
-  const response = {
-    message,
-  };
-
-  return res.status(statusCode).json(response);
+  return res
+    .status(statusCode)
+    .sendFile(path.join(__dirname, '..', 'public', 'html', '404.html'));
 }
 
 export { errorLogger, errorHandler, invalidPathHandler };
